@@ -116,7 +116,7 @@ bool CVisualizationWaveForm::Start(int channels, int samplesPerSec, int bitsPerS
   }
   else
   {
-    m_position.resize(1024);
+    m_position.resize(1024*6);
   }
 
   kodi::addon::CheckSettingFloat("line-red", m_lineColor.r);
@@ -236,7 +236,7 @@ void CVisualizationWaveForm::DrawLine(float* waveform, bool topBottom)
   {
     for (int i = 0; i < m_usedLinePoints; i++)
     {
-      m_position[ptr++] = glm::vec3(-1.0f + ((i / float(m_usedLinePoints)) * 2.0f), waveform[i] * 0.3f, 1.0f);
+      m_position[ptr++] = glm::vec3(-1.0f + ((i / float(m_usedLinePoints)) * 2.0f), posYOffset + waveform[i] * 0.9f, 1.0f);
     }
 
     mode = GL_LINE_STRIP;
