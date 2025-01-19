@@ -267,7 +267,7 @@ void CVisualizationWaveForm::AudioData(const float* pAudioData, size_t iAudioDat
     for (size_t i=0; i < iAudioDataLength; i+=usedStep)
     {
       m_fWaveform[0][ipos] = pAudioData[i  ]; // left channel
-      m_fWaveform[1][ipos] = pAudioData[i+1]; // right channel
+      // m_fWaveform[1][ipos] = pAudioData[i+1]; // right channel
       ipos++;
       if (ipos >= m_usedLinePoints)
          break;
