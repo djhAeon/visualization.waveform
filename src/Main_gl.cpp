@@ -192,7 +192,7 @@ void CVisualizationWaveForm::Render()
   DrawLine(m_fWaveform[0], false);
 
   // Right channel
-  // DrawLine(m_fWaveform[1], true);
+  DrawLine(m_fWaveform[1], true);
 
   DisableShader();
 
