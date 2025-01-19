@@ -255,7 +255,7 @@ void CVisualizationWaveForm::AudioData(const float* pAudioData, size_t iAudioDat
   size_t usedStep;
   if (m_ignoreResample)
   {
-    usedStep = 1;
+    usedStep = 3;
   }
   else
   {
