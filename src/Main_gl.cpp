@@ -104,7 +104,7 @@ bool CVisualizationWaveForm::Start(int channels, int samplesPerSec, int bitsPerS
   }
   else
   {
-    m_ignoreResample = false;
+    m_ignoreResample = true;
   }
 
   kodi::addon::CheckSettingInt("line-thickness", m_lineThickness);
@@ -215,8 +215,8 @@ void CVisualizationWaveForm::DrawLine(float* waveform, bool topBottom)
   {
     for (int i = 0; i < m_usedLinePoints-1; i++)
     {
-      glm::vec2 A = glm::vec2(-1.0f + ((i     / float(m_usedLinePoints-1)) * 2.0f), waveform[i]   * 0.3f);
-      glm::vec2 B = glm::vec2(-1.0f + (((i+1) / float(m_usedLinePoints-1)) * 2.0f), waveform[i+1] * 0.3f);
+      glm::vec2 A = glm::vec2(-1.0f + ((i     / float(m_usedLinePoints-1)) * 2.0f), posYOffset + waveform[i]   * 0.3f);
+      glm::vec2 B = glm::vec2(-1.0f + (((i+1) / float(m_usedLinePoints-1)) * 2.0f), posYOffset + waveform[i+1] * 0.3f);
 
       glm::vec2 p(B.x - A.x, B.y - A.y);
       p = glm::normalize(p);
@@ -236,7 +236,7 @@ void CVisualizationWaveForm::DrawLine(float* waveform, bool topBottom)
   {
     for (int i = 0; i < m_usedLinePoints; i++)
     {
-      m_position[ptr++] = glm::vec3(-1.0f + ((i / float(m_usedLinePoints)) * 2.0f), waveform[i] * 0.3f, 1.0f);
+      m_position[ptr++] = glm::vec3(-1.0f + ((i / float(m_usedLinePoints)) * 2.0f), posYOffset + waveform[i] * 0.3f, 1.0f);
     }
 
     mode = GL_LINE_STRIP;
